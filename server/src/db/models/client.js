@@ -12,5 +12,14 @@ module.exports = (sequelize, DataTypes) => {
         },
     }, {});
 
+    Client.associate = function (models) {
+        Client.hasMany(models.Good, {
+            foreignKey: {
+                field: 'clientId',
+                onDelete: 'CASCADE'
+            }
+        })
+    };
+
     return Client;
 };
